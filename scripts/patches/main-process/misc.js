@@ -143,7 +143,7 @@ function applyLinuxXdgDocumentsDirPatch(currentSource) {
     "function codexLinuxXdgDocumentsDir({fs:e,homeDir:t,path:n}){try{",
     "let r=process.env.XDG_CONFIG_HOME?.trim(),i=r&&n.isAbsolute(r)?n.join(r,`user-dirs.dirs`):n.join(t,`.config`,`user-dirs.dirs`);",
     "if(!e.existsSync(i))return null;",
-    "let a=e.readFileSync(i,`utf8`).match(/^XDG_DOCUMENTS_DIR=([\"'])(.*)\\1/m);",
+    "let a=e.readFileSync(i,`utf8`).match(/^XDG_DOCUMENTS_DIR=([\"'])((?:\\\\.|(?!\\1).)*)\\1\\s*(?:#.*)?$/m);",
     "if(a==null)return null;",
     "let o=a[2].replace(/\\\\(.)/g,`$1`);",
     "if(o===`$HOME`)return t;",

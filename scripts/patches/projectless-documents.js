@@ -15,7 +15,7 @@ function xdgDocumentsHelperSource() {
     "if(process.platform!==`linux`)return t.join(e,`Documents`,`Codex`);",
     "let n=process.env.XDG_CONFIG_HOME?.trim(),r=n&&t.isAbsolute(n)?t.join(n,`user-dirs.dirs`):t.join(e,`.config`,`user-dirs.dirs`);",
     "if(!require(`node:fs`).existsSync(r))return t.join(e,`Documents`,`Codex`);",
-    "let i=require(`node:fs`).readFileSync(r,`utf8`).match(/^XDG_DOCUMENTS_DIR=([\"'])(.*)\\1/m);",
+    "let i=require(`node:fs`).readFileSync(r,`utf8`).match(/^XDG_DOCUMENTS_DIR=([\"'])((?:\\\\.|(?!\\1).)*)\\1\\s*(?:#.*)?$/m);",
     "if(i==null)return t.join(e,`Documents`,`Codex`);",
     "let a=i[2].replace(/\\\\(.)/g,`$1`),o=a===`$HOME`?e:a.startsWith(`$HOME/`)?t.join(e,a.slice(6)):a.startsWith(`~/`)?t.join(e,a.slice(2)):t.isAbsolute(a)?a:t.join(e,a);",
     "return t.join(o,`Codex`)",

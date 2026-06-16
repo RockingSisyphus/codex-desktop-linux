@@ -1142,7 +1142,7 @@ test("uses XDG user documents directory for projectless Codex folders on Linux",
     fs.mkdirSync(configDir, { recursive: true });
     fs.writeFileSync(
       path.join(configDir, "user-dirs.dirs"),
-      'XDG_DOCUMENTS_DIR="$HOME/My\\ Documents"\n',
+      'XDG_DOCUMENTS_DIR="$HOME/My\\ Documents" # comment "with quote"\n',
       "utf8",
     );
 
@@ -1181,7 +1181,7 @@ test("uses XDG user documents directory for generated projectless workspaces", (
     fs.mkdirSync(configDir, { recursive: true });
     fs.writeFileSync(
       path.join(configDir, "user-dirs.dirs"),
-      'XDG_DOCUMENTS_DIR="$HOME/My\\ Documents"\n',
+      'XDG_DOCUMENTS_DIR="$HOME/My\\ Documents" # comment "with quote"\n',
       "utf8",
     );
 
